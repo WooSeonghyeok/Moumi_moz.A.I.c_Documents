@@ -1,0 +1,752 @@
+<html><head><title>260413_2차 프로젝트_Unity 3기_우성혁</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body class="pdf ko-KR" lang="ko-KR"><article id="322a88c5-4189-804f-acc6-e144fcadf93c" class="page sans"><header><h1 class="page-title" dir="auto">260413_2차 프로젝트_Unity 3기_우성혁</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure class="block-color-default callout" style="white-space:pre-wrap;display:flex" id="322a88c5-4189-80a9-8a0d-c5a583eee876"><div style="font-size:1.5em"><span class="icon">📌</span></div><div style="width:100%"><strong>과제 제출 방법</strong><div style="display:contents" dir="auto"><ol type="1" id="322a88c5-4189-8073-91f4-c3eafc24bdfa" class="numbered-list" start="1"><li>전체 복사 후 개인페이지에 붙여넣은 뒤 사용합니다. </li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="322a88c5-4189-8019-832e-c4a38c46c08b" class="numbered-list" start="2"><li>과제 작성 후 우측 상단에 점3개 아이콘을 클릭한 뒤 [내보내기] &gt; [PDF] 로 노션 페이지를 변환합니다. <div style="display:contents" dir="auto"><ul id="322a88c5-4189-80b5-acc5-d357949d88c6" class="bulleted-list"><li style="list-style-type:disc">내보내기 형식: PDF</li></ul></div><div style="display:contents" dir="auto"><ul id="322a88c5-4189-8009-8d44-ec1455408976" class="bulleted-list"><li style="list-style-type:disc">데이터베이스 포함: 현재 보기</li></ul></div><div style="display:contents" dir="auto"><ul id="322a88c5-4189-8010-a99b-e3be8e6be3fd" class="bulleted-list"><li style="list-style-type:disc">포함할 콘텐츠: 모든 콘텐츠</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="322a88c5-4189-80ac-a71e-d0333f508c9a" class="numbered-list" start="3"><li>다운받은 zip 파일 압축 해제 후, PDF 파일 명을 <code>yymmdd_2차 프로젝트_Unity 3기_OOO</code> 로 변경합니다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="322a88c5-4189-80ff-82e9-d99e90db2bf6" class="numbered-list" start="4"><li>과제 제출란에 PDF 파일을 제출합니다. (zip 파일이 아닌, <strong>PDF 파일</strong>을 제출해주세요!)</li></ol></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-80c5-a863-eca80cca4e54" class=""><em><mark class="highlight-gray"><strong>*추후 포트폴리오, 프로젝트 문서에 이 과제들을 활용할 수 있으니 일일회고처럼 꼼꼼히 기록해주세요.</strong></mark></em></p></div></div></figure></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-8031-9804-c585872acdf5" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="322a88c5-4189-8045-80f2-d7829649e107" class="block-color-purple_background">Scrum</h3></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-806e-b648-e81ac4e61744" class=""><em><mark class="highlight-gray">*금일 진행한 스크럼 내용을 간략하게 요약해주세요</mark></em></p></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-80dc-910d-f75602e349a2" class=""><em><mark class="highlight-gray">*스크럼을 진행하지 않았다면 공란으로 둡니다.</mark></em></p></div><div style="display:contents" dir="auto"><hr id="322a88c5-4189-8018-b85e-d239ee50f45e"/></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-80f2-97cc-e90e77278b1a" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="322a88c5-4189-8001-84c9-cbfd401db9ea" class="block-color-purple_background">Project</h3></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-80f2-b15a-c358aeefcaaa" class=""><em><mark class="highlight-gray">*프로젝트 작업에서 본인이 기여한 부분에 대해 작성합니다.<br/>*코드파일이 있다면 스크린샷이나 노션 코드를 사용하여 덧붙여주세요.<br/>(예: ERD 이미지, Figma 이미지, 코드 스크린샷, Unity 스크린샷 등)</mark></em></p></div><div style="display:contents" dir="auto"><hr id="322a88c5-4189-8040-9c15-d95eb9aaa802"/></div><div style="display:contents" dir="auto"><ol type="1" id="322a88c5-4189-802f-a03d-ee947eb7035d" class="numbered-list" start="1"><li><strong>오늘 진행할 작업</strong></li></ol></div><div style="display:contents" dir="auto"><ul id="341a88c5-4189-80fc-836c-f515df547d6a" class="bulleted-list"><li style="list-style-type:disc">병합 후 작업 충돌 여부 검수</li></ul></div><div style="display:contents" dir="auto"><ul id="341a88c5-4189-802e-b5c6-d0042feb0623" class="bulleted-list"><li style="list-style-type:disc">게임플레이 경험 및 연출 개선</li></ul></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-80fd-b1ae-c3cda4136fa9" class="">
+</p></div><div style="display:contents" dir="auto"><ol type="1" id="322a88c5-4189-80bf-8547-fe2456ac6bd1" class="numbered-list" start="2"><li><strong>진행중인 작업</strong></li></ol></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-80cb-a176-e433bdf8ec0b" class="">컷신 연출 수정</p></div><div style="display:contents" dir="auto"><div id="341a88c5-4189-8066-ad83-d96717ee4985" class="column-list"><div style="display:contents" dir="auto"><div id="341a88c5-4189-8088-9f76-f727736504e7" style="width:50%" class="column"><div style="display:contents" dir="ltr"><figure id="341a88c5-4189-807d-9da7-c3d8f697d333" class="image"><img style="width:703.984375px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/311a88c5-4189-8146-8d21-0003bfb12c1d/cccab324-86af-4063-aa82-b7ed841bc2fa/BCO.9dc82821-16f6-4e09-82b8-268d66335fa0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QP6MX747%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T115407Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIEXM641PGBRTXD4PHQb2Z%2Fbmoqmpoa%2FeHKQNm2CYrGclAiA%2FcI5tNxLoyJl%2BVo3kKfVscMq6YskLKYMrn4AfEUvlTyr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMmrt6nj6bIgeoidjCKtwDBSp4t%2BOQ1dfbnM73EPsTKu6R29K7fkvsmTblapuZ7lMCaIaRlVR28V2qWEiD7IepIWvSDEwCFj6H7kdHppxaxia%2BsH2NOLAfkSaFkffIzC92H3BHOx7MhJppL1LLBaJUB0rX67lveThDjz94yHiKMVardlnACy%2BzMsf6etXIsxio8d8A7pLdBFwRDc93u6E5chKv%2FdCAOvW5QhqGCwZLlg%2FlwQ40PikB51S4MLamYmNa6WTWoZ8bI%2Fj08jnGYM0SZCK2PK6SQ0krX3xirKP4sZxqPLbm7G%2B6r2d9F3g%2Bn1cAGLpD4lLPujzeBFMomgtg%2BWFdMHc7zyviftoEO2jJv5S96xxJg8d0SMsZK32K9bQXsC7wbxYtr%2Be0HhBYnLtQ3onSeAG18DYOAa4wCr1a2L2E%2BZwpWtYfK472L49LXM0xABEBsGwEImNwam13tv76SWxNtrFkdIR5AsfaxTbs6e9AM3QsV7VitsktOdBSfz0n5yDurCQXtdUMJ5mzyLX8OcVed1tcBRscI%2BmG6NXCxqcIuj%2BYh%2BOY6KqxNxcLyOzsnk%2FKzFcTI86BiQzzRIA6cfYZ4vJlkZ%2BmZH6lPAT4S8x80aTaIud08j50G0kReJbRQYPsXqB9EUHMG0ww84LzzgY6pgFmEgCxzAt6%2BsuYs6K5OsBIG%2FlhwArK%2F1poKIUsSJ3Omt9cr2carrDt9qKjV%2BTDweI5xY1v9l3wcgoL%2FFS8HnP3VURhg%2FR0Agw4Jkk8CwrEPng1GpEbWdY%2FrdKiDYoAGkiIxHL9jshkrIOGx2c2roFqq20MDP4AXyBRSaTcI3L8dH6BZQ0CopyiEcnB4tFAFC3Q1wA2tEr2%2BMQmRaruvuKE1ahYvd5L&amp;X-Amz-Signature=a717c420a778ff52eacfdacc68b4df20848f53a694d25e5bfd8f9535554116ec&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></div></div><div style="display:contents" dir="auto"><div id="341a88c5-4189-8042-8eca-db72045432b7" style="width:50%" class="column"><div style="display:contents" dir="ltr"><figure id="341a88c5-4189-801b-89b0-da9ba5380112" class="image"><img style="width:703.984375px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/311a88c5-4189-8146-8d21-0003bfb12c1d/0002acd2-57eb-41fc-8117-bf6d52989a4f/BCO.6c8feca0-ea1f-4f08-ab2d-ffedfad50190.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QP6MX747%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T115407Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIEXM641PGBRTXD4PHQb2Z%2Fbmoqmpoa%2FeHKQNm2CYrGclAiA%2FcI5tNxLoyJl%2BVo3kKfVscMq6YskLKYMrn4AfEUvlTyr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMmrt6nj6bIgeoidjCKtwDBSp4t%2BOQ1dfbnM73EPsTKu6R29K7fkvsmTblapuZ7lMCaIaRlVR28V2qWEiD7IepIWvSDEwCFj6H7kdHppxaxia%2BsH2NOLAfkSaFkffIzC92H3BHOx7MhJppL1LLBaJUB0rX67lveThDjz94yHiKMVardlnACy%2BzMsf6etXIsxio8d8A7pLdBFwRDc93u6E5chKv%2FdCAOvW5QhqGCwZLlg%2FlwQ40PikB51S4MLamYmNa6WTWoZ8bI%2Fj08jnGYM0SZCK2PK6SQ0krX3xirKP4sZxqPLbm7G%2B6r2d9F3g%2Bn1cAGLpD4lLPujzeBFMomgtg%2BWFdMHc7zyviftoEO2jJv5S96xxJg8d0SMsZK32K9bQXsC7wbxYtr%2Be0HhBYnLtQ3onSeAG18DYOAa4wCr1a2L2E%2BZwpWtYfK472L49LXM0xABEBsGwEImNwam13tv76SWxNtrFkdIR5AsfaxTbs6e9AM3QsV7VitsktOdBSfz0n5yDurCQXtdUMJ5mzyLX8OcVed1tcBRscI%2BmG6NXCxqcIuj%2BYh%2BOY6KqxNxcLyOzsnk%2FKzFcTI86BiQzzRIA6cfYZ4vJlkZ%2BmZH6lPAT4S8x80aTaIud08j50G0kReJbRQYPsXqB9EUHMG0ww84LzzgY6pgFmEgCxzAt6%2BsuYs6K5OsBIG%2FlhwArK%2F1poKIUsSJ3Omt9cr2carrDt9qKjV%2BTDweI5xY1v9l3wcgoL%2FFS8HnP3VURhg%2FR0Agw4Jkk8CwrEPng1GpEbWdY%2FrdKiDYoAGkiIxHL9jshkrIOGx2c2roFqq20MDP4AXyBRSaTcI3L8dH6BZQ0CopyiEcnB4tFAFC3Q1wA2tEr2%2BMQmRaruvuKE1ahYvd5L&amp;X-Amz-Signature=0976f154a404739ac477ee9079188c1800ce541e366050b015af3d53f3dc992b&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></div></div></div></div><div style="display:contents" dir="auto"><ul id="341a88c5-4189-80e8-9bc0-c1c9a0504c1d" class="bulleted-list"><li style="list-style-type:disc">오프닝 컷신 이미지 추가</li></ul></div><div style="display:contents" dir="auto"><div id="341a88c5-4189-800a-ad28-eed8fb7c8082" class="column-list"><div style="display:contents" dir="auto"><div id="341a88c5-4189-80a0-a88b-f1c18d76167d" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure id="341a88c5-4189-8092-ab9c-f88a98184623" class="image"><img style="width:1536px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/311a88c5-4189-8146-8d21-0003bfb12c1d/c9497954-aaf5-4e60-9e69-02f5c0db0dfb/Copilot_20260413_154214.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QP6MX747%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T115407Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIEXM641PGBRTXD4PHQb2Z%2Fbmoqmpoa%2FeHKQNm2CYrGclAiA%2FcI5tNxLoyJl%2BVo3kKfVscMq6YskLKYMrn4AfEUvlTyr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMmrt6nj6bIgeoidjCKtwDBSp4t%2BOQ1dfbnM73EPsTKu6R29K7fkvsmTblapuZ7lMCaIaRlVR28V2qWEiD7IepIWvSDEwCFj6H7kdHppxaxia%2BsH2NOLAfkSaFkffIzC92H3BHOx7MhJppL1LLBaJUB0rX67lveThDjz94yHiKMVardlnACy%2BzMsf6etXIsxio8d8A7pLdBFwRDc93u6E5chKv%2FdCAOvW5QhqGCwZLlg%2FlwQ40PikB51S4MLamYmNa6WTWoZ8bI%2Fj08jnGYM0SZCK2PK6SQ0krX3xirKP4sZxqPLbm7G%2B6r2d9F3g%2Bn1cAGLpD4lLPujzeBFMomgtg%2BWFdMHc7zyviftoEO2jJv5S96xxJg8d0SMsZK32K9bQXsC7wbxYtr%2Be0HhBYnLtQ3onSeAG18DYOAa4wCr1a2L2E%2BZwpWtYfK472L49LXM0xABEBsGwEImNwam13tv76SWxNtrFkdIR5AsfaxTbs6e9AM3QsV7VitsktOdBSfz0n5yDurCQXtdUMJ5mzyLX8OcVed1tcBRscI%2BmG6NXCxqcIuj%2BYh%2BOY6KqxNxcLyOzsnk%2FKzFcTI86BiQzzRIA6cfYZ4vJlkZ%2BmZH6lPAT4S8x80aTaIud08j50G0kReJbRQYPsXqB9EUHMG0ww84LzzgY6pgFmEgCxzAt6%2BsuYs6K5OsBIG%2FlhwArK%2F1poKIUsSJ3Omt9cr2carrDt9qKjV%2BTDweI5xY1v9l3wcgoL%2FFS8HnP3VURhg%2FR0Agw4Jkk8CwrEPng1GpEbWdY%2FrdKiDYoAGkiIxHL9jshkrIOGx2c2roFqq20MDP4AXyBRSaTcI3L8dH6BZQ0CopyiEcnB4tFAFC3Q1wA2tEr2%2BMQmRaruvuKE1ahYvd5L&amp;X-Amz-Signature=69656560054417f9ce3d94900abdb59fdb626e56d906988b9bb6a89734723223&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></div></div><div style="display:contents" dir="auto"><div id="341a88c5-4189-80bb-bb3d-c0c5117a2063" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure id="341a88c5-4189-802a-a1e3-c5fb9c9884e2" class="image"><img style="width:1536px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/311a88c5-4189-8146-8d21-0003bfb12c1d/d88ee163-c59b-4287-ab7f-e2d870f5143a/Copilot_20260413_162837.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QP6MX747%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T115407Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIEXM641PGBRTXD4PHQb2Z%2Fbmoqmpoa%2FeHKQNm2CYrGclAiA%2FcI5tNxLoyJl%2BVo3kKfVscMq6YskLKYMrn4AfEUvlTyr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMmrt6nj6bIgeoidjCKtwDBSp4t%2BOQ1dfbnM73EPsTKu6R29K7fkvsmTblapuZ7lMCaIaRlVR28V2qWEiD7IepIWvSDEwCFj6H7kdHppxaxia%2BsH2NOLAfkSaFkffIzC92H3BHOx7MhJppL1LLBaJUB0rX67lveThDjz94yHiKMVardlnACy%2BzMsf6etXIsxio8d8A7pLdBFwRDc93u6E5chKv%2FdCAOvW5QhqGCwZLlg%2FlwQ40PikB51S4MLamYmNa6WTWoZ8bI%2Fj08jnGYM0SZCK2PK6SQ0krX3xirKP4sZxqPLbm7G%2B6r2d9F3g%2Bn1cAGLpD4lLPujzeBFMomgtg%2BWFdMHc7zyviftoEO2jJv5S96xxJg8d0SMsZK32K9bQXsC7wbxYtr%2Be0HhBYnLtQ3onSeAG18DYOAa4wCr1a2L2E%2BZwpWtYfK472L49LXM0xABEBsGwEImNwam13tv76SWxNtrFkdIR5AsfaxTbs6e9AM3QsV7VitsktOdBSfz0n5yDurCQXtdUMJ5mzyLX8OcVed1tcBRscI%2BmG6NXCxqcIuj%2BYh%2BOY6KqxNxcLyOzsnk%2FKzFcTI86BiQzzRIA6cfYZ4vJlkZ%2BmZH6lPAT4S8x80aTaIud08j50G0kReJbRQYPsXqB9EUHMG0ww84LzzgY6pgFmEgCxzAt6%2BsuYs6K5OsBIG%2FlhwArK%2F1poKIUsSJ3Omt9cr2carrDt9qKjV%2BTDweI5xY1v9l3wcgoL%2FFS8HnP3VURhg%2FR0Agw4Jkk8CwrEPng1GpEbWdY%2FrdKiDYoAGkiIxHL9jshkrIOGx2c2roFqq20MDP4AXyBRSaTcI3L8dH6BZQ0CopyiEcnB4tFAFC3Q1wA2tEr2%2BMQmRaruvuKE1ahYvd5L&amp;X-Amz-Signature=6c17aa90f9ef5577fbfad685e88a3ce18d41c0dce64d169a03e1c6c753b7bf9b&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></div></div><div style="display:contents" dir="auto"><div id="341a88c5-4189-8012-ada2-ccf6ea5dac1c" style="width:100%" class="column"><div style="display:contents" dir="ltr"><figure id="341a88c5-4189-8059-896c-cee028371d61" class="image"><img style="width:1536px" src="https://prod-files-secure.s3.us-west-2.amazonaws.com/311a88c5-4189-8146-8d21-0003bfb12c1d/1eb55a33-af66-4057-a36f-88d53bf14008/Copilot_20260413_160013.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466QP6MX747%2F20260413%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20260413T115407Z&amp;X-Amz-Expires=21600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIEXM641PGBRTXD4PHQb2Z%2Fbmoqmpoa%2FeHKQNm2CYrGclAiA%2FcI5tNxLoyJl%2BVo3kKfVscMq6YskLKYMrn4AfEUvlTyr%2FAwhzEAAaDDYzNzQyMzE4MzgwNSIMmrt6nj6bIgeoidjCKtwDBSp4t%2BOQ1dfbnM73EPsTKu6R29K7fkvsmTblapuZ7lMCaIaRlVR28V2qWEiD7IepIWvSDEwCFj6H7kdHppxaxia%2BsH2NOLAfkSaFkffIzC92H3BHOx7MhJppL1LLBaJUB0rX67lveThDjz94yHiKMVardlnACy%2BzMsf6etXIsxio8d8A7pLdBFwRDc93u6E5chKv%2FdCAOvW5QhqGCwZLlg%2FlwQ40PikB51S4MLamYmNa6WTWoZ8bI%2Fj08jnGYM0SZCK2PK6SQ0krX3xirKP4sZxqPLbm7G%2B6r2d9F3g%2Bn1cAGLpD4lLPujzeBFMomgtg%2BWFdMHc7zyviftoEO2jJv5S96xxJg8d0SMsZK32K9bQXsC7wbxYtr%2Be0HhBYnLtQ3onSeAG18DYOAa4wCr1a2L2E%2BZwpWtYfK472L49LXM0xABEBsGwEImNwam13tv76SWxNtrFkdIR5AsfaxTbs6e9AM3QsV7VitsktOdBSfz0n5yDurCQXtdUMJ5mzyLX8OcVed1tcBRscI%2BmG6NXCxqcIuj%2BYh%2BOY6KqxNxcLyOzsnk%2FKzFcTI86BiQzzRIA6cfYZ4vJlkZ%2BmZH6lPAT4S8x80aTaIud08j50G0kReJbRQYPsXqB9EUHMG0ww84LzzgY6pgFmEgCxzAt6%2BsuYs6K5OsBIG%2FlhwArK%2F1poKIUsSJ3Omt9cr2carrDt9qKjV%2BTDweI5xY1v9l3wcgoL%2FFS8HnP3VURhg%2FR0Agw4Jkk8CwrEPng1GpEbWdY%2FrdKiDYoAGkiIxHL9jshkrIOGx2c2roFqq20MDP4AXyBRSaTcI3L8dH6BZQ0CopyiEcnB4tFAFC3Q1wA2tEr2%2BMQmRaruvuKE1ahYvd5L&amp;X-Amz-Signature=ded6d041c6e66210a43a978b40df554a2943ec7d67073f80b8258102a1051030&amp;X-Amz-SignedHeaders=host&amp;x-amz-checksum-mode=ENABLED&amp;x-id=GetObject"/></figure></div></div></div></div></div><div style="display:contents" dir="auto"><ul id="341a88c5-4189-8038-b87d-d7ee14e9be9a" class="bulleted-list"><li style="list-style-type:disc">엔딩 이미지(진 엔딩 / 노멀 엔딩 / 엔딩 이후) 추가</li></ul></div><div style="display:contents" dir="auto"><p id="341a88c5-4189-8062-ae71-e205fbbe22b3" class="">
+</p></div><div style="display:contents" dir="auto"><p id="341a88c5-4189-807d-9af2-e20c885580d4" class="">상호작용 포인트(체크포인트 → 로비 이동 / 세이브 지점)에서 상호작용 터치 알림 UI 출력</p></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-8029-aab1-d2ab67cb7f80" class="">
+</p></div><div style="display:contents" dir="auto"><ol type="1" id="322a88c5-4189-800c-8051-c656fdb31463" class="numbered-list" start="3"><li><strong>내일 개발 계획 및 목표</strong></li></ol></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-8001-a4a8-d5ad15dfaf44" class="">수동으로 컷신 텍스트를 빠르게 넘길 수 있도록 하는 기능 추가</p></div><div style="display:contents" dir="auto"><ul id="341a88c5-4189-806e-965e-f325fac26cf3" class="bulleted-list"><li style="list-style-type:disc">컷신 이미지를 재생하는 경우 넘기기 기능을 사용하지 않는 기능 포함</li></ul></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-8076-89aa-f2b29c655f4b" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="322a88c5-4189-8003-8581-df8fc0c8977b" class="block-color-purple_background">Trouble Shooting</h3></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-8055-84f6-c9109adf9bac" class=""><em><mark class="highlight-gray">*금일 개발 과정 중, 문제를 해결한 경험이 있다면 기술해주세요.</mark></em></p></div><div style="display:contents" dir="auto"><hr id="322a88c5-4189-80b0-aa26-c668137fcb18"/></div><div style="display:contents" dir="auto"><ol type="1" id="322a88c5-4189-80ab-90b9-cf60758529d5" class="numbered-list" start="1"><li>문제 상황 파악</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="322a88c5-4189-80cb-bae1-c032f5dc6d4a" class="numbered-list" start="2"><li>문제 발생 조건 파악</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="322a88c5-4189-8076-8c2e-cfe4505e59b0" class="numbered-list" start="3"><li>결과 검증, 해결</li></ol></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-8042-949c-c008bcc28b0c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-8004-9538-dd6be6622e89" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="322a88c5-4189-805c-bf78-dc04b95b4d0f" class="">그 외 과제 제출 (선택기입)</h2></div><div style="display:contents" dir="auto"><h3 id="322a88c5-4189-8068-8688-fcf949cfacbf" class="block-color-purple_background">Github / Blog</h3></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-80ba-9ae9-f61491625289" class=""><em><mark class="highlight-gray">*별도로 회고를 정리하는 깃헙, 블로그 게시글 링크가 있다면 첨부해주세요.</mark></em></p></div><div style="display:contents" dir="auto"><hr id="322a88c5-4189-80b6-b9b1-ff56fd021400"/></div><div style="display:contents" dir="auto"><ul id="322a88c5-4189-80f6-87e0-f371baf283c7" class="bulleted-list"><li style="list-style-type:disc">Github:</li></ul></div><div style="display:contents" dir="auto"><ul id="322a88c5-4189-8047-9513-fe33b13fe621" class="bulleted-list"><li style="list-style-type:disc">Blog:</li></ul></div><div style="display:contents" dir="auto"><ul id="322a88c5-4189-8057-9998-e1919a0a4e8a" class="bulleted-list"><li style="list-style-type:disc">Velog:</li></ul></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-80cd-b666-ff1b770a9259" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="322a88c5-4189-804e-af77-cf28d8d12508" class="block-color-purple_background">기술탐구</h3></div><div style="display:contents" dir="auto"><p id="322a88c5-4189-8060-9cfe-ec080078fe30" class=""><em><mark class="highlight-gray">*프로젝트 작업을 위해 추가로 학습한 게시글이 있다면 링크를 첨부해주세요</mark></em></p></div><div style="display:contents" dir="auto"><hr id="322a88c5-4189-804f-9bc3-f92e0a728336"/></div><div style="display:contents" dir="auto"><ul id="322a88c5-4189-8018-b42a-f3924f869f8e" class="bulleted-list"><li style="list-style-type:disc">(예시) 부트스트랩 설치방법: <a href="https://datamoney.tistory.com/149">https://datamoney.tistory.com/149</a></li></ul></div><div style="display:contents" dir="auto"><ul id="322a88c5-4189-803f-8611-f9389e3182d7" class="bulleted-list"><li style="list-style-type:disc">링크 1:</li></ul></div><div style="display:contents" dir="auto"><ul id="322a88c5-4189-8098-8afb-f409e6fe10bf" class="bulleted-list"><li style="list-style-type:disc">링크 2:</li></ul></div></div></article></body></html>
